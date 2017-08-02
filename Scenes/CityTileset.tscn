@@ -1,0 +1,289 @@
+[gd_scene load_steps=23 format=1]
+
+[ext_resource path="res://Assets/City Tileset/Grass.png" type="Texture" id=1]
+[ext_resource path="res://Assets/City Tileset/House01.png" type="Texture" id=2]
+[ext_resource path="res://Assets/City Tileset/House01_Off.png" type="Texture" id=3]
+[ext_resource path="res://Assets/City Tileset/RoadHorizontal.png" type="Texture" id=4]
+[ext_resource path="res://Assets/City Tileset/RoadVertical.png" type="Texture" id=5]
+[ext_resource path="res://Assets/City Tileset/RoadIntersection.png" type="Texture" id=6]
+[ext_resource path="res://Assets/City Tileset/Building01.png" type="Texture" id=7]
+[ext_resource path="res://Assets/City Tileset/Building01_Off.png" type="Texture" id=8]
+[ext_resource path="res://Assets/City Tileset/Building02.png" type="Texture" id=9]
+[ext_resource path="res://Assets/City Tileset/Building02_Off.png" type="Texture" id=10]
+[ext_resource path="res://Assets/City Tileset/Apartments01.png" type="Texture" id=11]
+[ext_resource path="res://Assets/City Tileset/Apartments01_Off.png" type="Texture" id=12]
+[ext_resource path="res://Assets/City Tileset/House02.png" type="Texture" id=13]
+[ext_resource path="res://Assets/City Tileset/House02_Off.png" type="Texture" id=14]
+[ext_resource path="res://Assets/City Tileset/Car01.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Images/Wall.png" type="Texture" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 5.89458, 5.75642 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.98708, 10.1302 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8.13459, 15.9182 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8.02563, 7.95634 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 5.94937, 5.84784 )
+
+[sub_resource type="RectangleShape2D" id=10]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8, 8 )
+
+[node name="WorldNode" type="Node2D"]
+
+[node name="Grass" type="Sprite" parent="."]
+
+transform/pos = Vector2( 8, 8 )
+texture = ExtResource( 1 )
+
+[node name="House01" type="Sprite" parent="." groups=[
+"Buildings",
+]]
+
+transform/pos = Vector2( 72, 8 )
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="House01" groups=[
+"Buildings",
+]]
+
+editor/display_folded = true
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2.20366 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House01/StaticBody2D"]
+
+transform/pos = Vector2( 0, 2.20366 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="House01_Off" type="Sprite" parent="." groups=[
+"Buildings",
+]]
+
+transform/pos = Vector2( 88, 8 )
+texture = ExtResource( 3 )
+
+[node name="RoadHorizontal" type="Sprite" parent="."]
+
+transform/pos = Vector2( 24, 8 )
+texture = ExtResource( 4 )
+
+[node name="RoadVertical" type="Sprite" parent="."]
+
+transform/pos = Vector2( 40, 8 )
+texture = ExtResource( 5 )
+
+[node name="RoadIntersection" type="Sprite" parent="."]
+
+transform/pos = Vector2( 56, 8 )
+texture = ExtResource( 6 )
+
+[node name="Building01" type="Sprite" parent="." groups=[
+"Buildings",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 8, 40 )
+texture = ExtResource( 7 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Building01" groups=[
+"Buildings",
+]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, -0.0149841, 4.89201 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building01/StaticBody2D"]
+
+transform/pos = Vector2( -0.0149841, 4.89201 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Building01_Off" type="Sprite" parent="." groups=[
+"Buildings",
+]]
+
+transform/pos = Vector2( 24, 40 )
+texture = ExtResource( 8 )
+
+[node name="Building02" type="Sprite" parent="." groups=[
+"Buildings",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 40, 40 )
+texture = ExtResource( 9 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Building02" groups=[
+"Buildings",
+]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building02/StaticBody2D"]
+
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Building02_Off" type="Sprite" parent="." groups=[
+"Buildings",
+]]
+
+transform/pos = Vector2( 56, 40 )
+texture = ExtResource( 10 )
+
+[node name="Apartments01" type="Sprite" parent="." groups=[
+"Buildings",
+]]
+
+editor/display_folded = true
+transform/pos = Vector2( 104, 8 )
+texture = ExtResource( 11 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Apartments01" groups=[
+"Buildings",
+]]
+
+editor/display_folded = true
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Apartments01/StaticBody2D"]
+
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Apartments01_Off" type="Sprite" parent="." groups=[
+"Buildings",
+]]
+
+transform/pos = Vector2( 120, 8 )
+texture = ExtResource( 12 )
+
+[node name="House02" type="Sprite" parent="." groups=[
+"Buildings",
+]]
+
+transform/pos = Vector2( 72, 24 )
+texture = ExtResource( 13 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="House02" groups=[
+"Buildings",
+]]
+
+input/pickable = false
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 2.13085 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House02/StaticBody2D"]
+
+transform/pos = Vector2( 0, 2.13085 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="House02_Off" type="Sprite" parent="." groups=[
+"Buildings",
+]]
+
+transform/pos = Vector2( 88, 24 )
+texture = ExtResource( 14 )
+
+[node name="Car01" type="Sprite" parent="."]
+
+transform/pos = Vector2( 136, 8 )
+texture = ExtResource( 15 )
+
+[node name="Wall" type="Sprite" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 120, 24 )
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 10 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/StaticBody2D"]
+
+shape = SubResource( 10 )
+trigger = false
+_update_shape_index = 0
+
+
