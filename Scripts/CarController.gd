@@ -9,13 +9,23 @@ const car_speed = 2
 var gas_cans_collected = 1
 var timer = 30
 
+var screen_touched = false
+var touch_location = Vector2()
+
 onready var gameManager = get_node("/root/GameManager")
 
 func _ready():
 	get_node("BackgroundMusic").play()
 	set_process(true)
 	set_fixed_process(true)
+	set_process_input(true)
 
+func _input(event):
+	if event.type == InputEvent.SCREEN_TOUCH && event.pressed:
+		screen_touched = true
+		touch_location = get_viewport().get_mouse_pos()
+	elif event.type == InputEvent.SCREEN_TOUCH && !event.pressed:
+		screen_touched = false
 
 func _process(delta):
 	if Input.is_action_pressed("ui_up"):
@@ -28,6 +38,20 @@ func _process(delta):
 	if Input.is_action_pressed("ui_right"):
 		apply_impulse(Vector2(16, 0), Vector2(0, car_speed/2))
 		apply_impulse(Vector2(-16, 0), Vector2(0, -car_speed/2))
+		
+	if (OS.get_name() == "iOS" || OS.get_name() == "Android"):
+		if Input.get_accelerometer().x < -0.1:
+			apply_impulse(Vector2(16, 0), Vector2(0, -car_speed/2))
+			apply_impulse(Vector2(-16, 0), Vector2(0, car_speed/2))
+		elif Input.get_accelerometer().x > 0.1:
+			apply_impulse(Vector2(16, 0), Vector2(0, car_speed/2))
+			apply_impulse(Vector2(-16, 0), Vector2(0, -car_speed/2))
+		if screen_touched:
+			var viewport_width = get_viewport_rect().size.width
+			if (viewport_width - touch_location.x) > viewport_width/2:
+				apply_impulse(Vector2(0, 0), Vector2(car_speed * sin(get_rot()), car_speed * cos(get_rot())))
+			else:
+				apply_impulse(Vector2(0, 0), Vector2(-car_speed * sin(get_rot()), -car_speed * cos(get_rot())))
 		
 func _fixed_process(delta):
 	timer -= delta
