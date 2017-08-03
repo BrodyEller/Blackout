@@ -15,6 +15,10 @@ Screenshots:
 
 Changelog:
 
+* v1.1.0:
+  * Released 8/2/17
+  * Added support for iOS
+  * May work for Android
 * v1.0.0:
   * Released 8/2/17
   * The game as it was when the Ludum Dare 39 Compo ended.
